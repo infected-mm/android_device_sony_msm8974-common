@@ -20,44 +20,9 @@
 #include "init_board_common.h"
 #include "init_prototypes.h"
 
-// Constants: device LEDs
-#include "sony_lights.h"
-
-// Constants: devices controls
-#define DEV_BLOCK_FOTA_NUM 16
-
 // Class: init_board_device
 class init_board_device : public init_board_common
 {
-public:
-    // Board: introduction for keycheck
-    virtual void introduce_keycheck()
-    {
-        // LED boot selection colors
-        led_color(255, 0, 255);
-    }
-
-    // Board: introduction for Android
-    virtual void introduce_android()
-    {
-        // Power off LED
-        led_color(0, 0, 0);
-    }
-
-    // Board: introduction for Recovery
-    virtual void introduce_recovery()
-    {
-        // LED Recovery colors
-        led_color(255, 100, 0);
-    }
-
-    // Board: set led colors
-    void led_color(uint8_t r, uint8_t g, uint8_t b)
-    {
-        write_int(LED_RED_PATH "brightness", r);
-        write_int(LED_GREEN_PATH "brightness", g);
-        write_int(LED_BLUE_PATH "brightness", b);
-    }
 };
 
 #endif //__INIT_BOARD_DEVICE_H__
